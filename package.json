@@ -4,6 +4,9 @@
   "description": "Chess as a Service API",
   "main": "server.js",
   "scripts": {
+    "dev": "npm run build && concurrently -n dotenv,tsc,server 'tsc --watch --preserveWatchOutput' 'nodemon --watch .env --watch build -e js,json --delay 2.5ms --ignore \"build/**/*.test.js\" build/server.js'",
+    "build": "tsc -p tsconfig.json",
+    "start": "node build/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nick Snyder",
@@ -16,6 +19,8 @@
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
     "@types/node": "^18.11.10",
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.3"
   },
