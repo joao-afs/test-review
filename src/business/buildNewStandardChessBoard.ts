@@ -282,9 +282,7 @@ const buildNewStandardChessBoard = async (): Promise<ChessBoard> => {
     turn: firstTurnColor,
   }
 
-  await saveBoard(board)
-
-  return board
+  return await saveBoard(board)
 }
 
 export default buildNewStandardChessBoard
