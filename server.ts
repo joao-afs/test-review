@@ -1,16 +1,5 @@
 import dotenv from 'dotenv'
-import fastify, { FastifyInstance, FastifyServerOptions } from 'fastify'
-import allRoutes from './src/routes'
-
-const createServer = async (
-  opts: FastifyServerOptions
-): Promise<FastifyInstance> => {
-  const server = fastify({ ...opts })
-
-  await server.register(allRoutes)
-
-  return server
-}
+import createServer from './createServer'
 
 const start = async () => {
   dotenv.config()
