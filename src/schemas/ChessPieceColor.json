@@ -1,0 +1,6 @@
+{
+  "$id": "ChessPieceColor.json",
+  "title": "ChessPieceColor",
+  "type": "string",
+  "enum": ["white", "black"]
+}

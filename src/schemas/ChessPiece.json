@@ -7,8 +7,7 @@
   "required": ["color", "pieceType", "position"],
   "properties": {
     "color": {
-      "type": "string",
-      "enum": ["black", "white"]
+      "$ref": "ChessPieceColor.json"
     },
     "pieceType": {
       "$ref": "ChessPieceType.json"

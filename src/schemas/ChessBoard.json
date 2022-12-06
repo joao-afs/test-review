@@ -4,7 +4,7 @@
   "type": "object",
   "additionalProperties": false,
   "description": "A representation of the state of a chess board.",
-  "required": ["boardSize", "currentPieces"],
+  "required": ["boardSize", "currentPieces", "turn"],
   "properties": {
     "boardSize": {
       "type": "object",
@@ -27,6 +27,9 @@
       "items": {
         "$ref": "ChessPiece.json"
       }
+    },
+    "turn": {
+      "$ref": "ChessPieceColor.json"
     }
   }
 }
