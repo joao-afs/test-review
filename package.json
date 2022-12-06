@@ -51,7 +51,10 @@
         ],
         "modulePathIgnorePatterns": [
           "<rootDir>/build/"
-        ]
+        ],
+        "clearMocks": true,
+        "resetMocks": true,
+        "restoreMocks": true
       }
     ]
   },

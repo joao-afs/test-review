@@ -8,6 +8,8 @@ import {
 import { ApiError } from '../types/ApiError'
 import { ChessBoardQueryParams } from '../types/ChessBoardQueryParams'
 import { ChessBoard } from '../types/ChessBoard'
+import buildNewStandardChessBoard from '../business/buildNewStandardChessBoard'
+import getChessBoard from '../business/getChessBoard'
 
 type Reply = { board: ChessBoard } | { error: ApiError }
 type FetchChessBoardRoute = { Querystring: ChessBoardQueryParams; Reply: Reply }
@@ -17,17 +19,22 @@ export const handler: RouteHandler<FetchChessBoardRoute> = async (
   reply
 ) => {
   if (request.query.boardId === undefined) {
-    // TODO: Create a new board and return it
-  } else {
-    // TODO: Fetch the board by its id and return it. Return 404 if it does not exist.
-  }
+    const newBoard = await buildNewStandardChessBoard()
 
-  return reply.status(502).send({
-    error: {
-      code: 'NotImplemented',
-      message: 'The create new game route has not yet been implemented.',
-    },
-  })
+    return reply.status(200).send({ board: newBoard })
+  } else {
+    const board = await getChessBoard(request.query.boardId)
+    if (!board) {
+      return reply.status(404).send({
+        error: {
+          code: 'NotFound',
+          message: 'No existing chess board was found with the provided id.',
+        },
+      })
+    }
+
+    return reply.status(200).send({ board })
+  }
 }
 
 export const fetchChessBoard: RouteOptions<
