@@ -3,7 +3,7 @@
   "title": "Position",
   "type": "object",
   "additionalProperties": false,
-  "description": "A 0-indexed position on the chess board.",
+  "description": "A 0-indexed position on the chess board. If `contains` is present with data, a chess piece exists at the position",
   "required": ["column", "row"],
   "properties": {
     "column": {
@@ -13,6 +13,9 @@
     "row": {
       "type": "number",
       "minimum": 0
+    },
+    "contains": {
+      "$ref": "ChessPiece.json"
     }
   }
 }
