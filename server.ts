@@ -1,10 +1,13 @@
 import dotenv from 'dotenv'
 import fastify, { FastifyInstance, FastifyServerOptions } from 'fastify'
+import allRoutes from './src/routes'
 
 const createServer = async (
   opts: FastifyServerOptions
 ): Promise<FastifyInstance> => {
   const server = fastify({ ...opts })
+
+  await server.register(allRoutes)
 
   return server
 }
@@ -12,7 +15,7 @@ const createServer = async (
 const start = async () => {
   dotenv.config()
 
-  const server = await createServer({}).catch((err) => {
+  const server = await createServer({ logger: {} }).catch((err) => {
     console.error('Failed to createServer!', { error: err })
     process.exit(2)
   })
@@ -24,4 +27,5 @@ const start = async () => {
     process.exit(1)
   }
 }
-start()
+
+void start()
