@@ -10,9 +10,9 @@ import { ChessBoardQueryParams } from '../types/ChessBoardQueryParams'
 import { ChessBoard } from '../types/ChessBoard'
 
 type Reply = ChessBoard | { error: ApiError }
-type CreateNewGameRoute = { Querystring: ChessBoardQueryParams; Reply: Reply }
+type FetchChessBoardRoute = { Querystring: ChessBoardQueryParams; Reply: Reply }
 
-export const handler: RouteHandler<CreateNewGameRoute> = async (
+export const handler: RouteHandler<FetchChessBoardRoute> = async (
   request,
   reply
 ) => {
@@ -24,11 +24,11 @@ export const handler: RouteHandler<CreateNewGameRoute> = async (
   })
 }
 
-export const createNewGame: RouteOptions<
+export const fetchChessBoard: RouteOptions<
   RawServerDefault,
   RawRequestDefaultExpression<RawServerDefault>,
   RawReplyDefaultExpression<RawServerDefault>,
-  CreateNewGameRoute
+  FetchChessBoardRoute
 > = {
   method: 'GET',
   url: '/board',
@@ -45,4 +45,4 @@ export const createNewGame: RouteOptions<
   },
 }
 
-export default createNewGame
+export default fetchChessBoard
