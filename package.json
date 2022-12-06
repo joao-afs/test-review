@@ -61,5 +61,8 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "fastify": "^4.10.2"
+  },
+  "volta": {
+    "node": "18.12.1"
   }
 }
