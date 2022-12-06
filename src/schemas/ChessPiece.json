@@ -1,0 +1,20 @@
+{
+  "$id": "ChessPiece.json",
+  "title": "ChessPiece",
+  "type": "object",
+  "additionalProperties": false,
+  "description": "A single player chess piece located on a chess board.",
+  "required": ["color", "pieceType", "position"],
+  "properties": {
+    "color": {
+      "type": "string",
+      "enum": ["black", "white"]
+    },
+    "pieceType": {
+      "$ref": "ChessPieceType.json"
+    },
+    "position": {
+      "$ref": "Position.json"
+    }
+  }
+}

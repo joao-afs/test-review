@@ -1,0 +1,18 @@
+{
+  "$id": "Position.json",
+  "title": "Position",
+  "type": "object",
+  "additionalProperties": false,
+  "description": "A 0-indexed position on the chess board.",
+  "required": ["column", "row"],
+  "properties": {
+    "column": {
+      "type": "number",
+      "minimum": 0
+    },
+    "row": {
+      "type": "number",
+      "minimum": 0
+    }
+  }
+}
