@@ -6,7 +6,7 @@
   "description": "Contains params for requesting information about a specific chess board instance.",
   "properties": {
     "boardId": {
-      "type": "number"
+      "type": "string"
     }
   }
 }
