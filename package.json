@@ -4,7 +4,8 @@
   "description": "Chess as a Service API",
   "main": "server.js",
   "scripts": {
-    "dev": "npm run build && concurrently -n dotenv,tsc,server 'tsc --watch --preserveWatchOutput' 'nodemon --watch .env --watch build -e js,json --delay 2.5ms --ignore \"build/**/*.test.js\" build/server.js'",
+    "generate:types": "json2ts -i 'src/schemas' -o 'src/types' --unknownAny --cwd 'src/schemas'",
+    "dev": "npm run generate:types && npm run build && concurrently -n dotenv,tsc,server 'tsc --watch --preserveWatchOutput' 'nodemon --watch .env --watch build -e js,json --delay 2.5ms --ignore \"build/**/*.test.js\" build/server.js'",
     "build": "tsc -p tsconfig.json",
     "start": "node build/server.js",
     "test": "node node_modules/.bin/jest --verbose --color"
@@ -53,6 +54,7 @@
     "concurrently": "^7.6.0",
     "eslint": "^8.29.0",
     "jest": "^29.3.1",
+    "json-schema-to-typescript": "^11.0.2",
     "nodemon": "^2.0.20",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
