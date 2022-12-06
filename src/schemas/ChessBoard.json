@@ -6,6 +6,9 @@
   "description": "A representation of the state of a chess board.",
   "required": ["boardSize", "currentPieces", "turn"],
   "properties": {
+    "boardId": {
+      "type": "string"
+    },
     "boardSize": {
       "type": "object",
       "required": ["columns", "rows"],
