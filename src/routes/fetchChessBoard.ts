@@ -9,13 +9,19 @@ import { ApiError } from '../types/ApiError'
 import { ChessBoardQueryParams } from '../types/ChessBoardQueryParams'
 import { ChessBoard } from '../types/ChessBoard'
 
-type Reply = ChessBoard | { error: ApiError }
+type Reply = { board: ChessBoard } | { error: ApiError }
 type FetchChessBoardRoute = { Querystring: ChessBoardQueryParams; Reply: Reply }
 
 export const handler: RouteHandler<FetchChessBoardRoute> = async (
   request,
   reply
 ) => {
+  if (request.query.boardId === undefined) {
+    // TODO: Create a new board and return it
+  } else {
+    // TODO: Fetch the board by its id and return it. Return 404 if it does not exist.
+  }
+
   return reply.status(502).send({
     error: {
       code: 'NotImplemented',
@@ -39,7 +45,12 @@ export const fetchChessBoard: RouteOptions<
     },
     response: {
       200: {
-        $ref: 'ChessBoard.json',
+        type: 'object',
+        properties: {
+          board: {
+            $ref: 'ChessBoard.json',
+          },
+        },
       },
     },
   },
