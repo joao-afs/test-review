@@ -40,11 +40,20 @@
     "semi": false
   },
   "jest": {
-    "projects": {
-      "displayName": "test",
-      "preset": "ts-jest",
-      "testEnvironment": "node"
-    }
+    "projects": [
+      {
+        "displayName": "test",
+        "preset": "ts-jest",
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+          "/node_modules/",
+          "<rootDir>/build/"
+        ],
+        "modulePathIgnorePatterns": [
+          "<rootDir>/build/"
+        ]
+      }
+    ]
   },
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
