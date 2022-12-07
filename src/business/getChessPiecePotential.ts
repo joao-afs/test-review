@@ -5,10 +5,10 @@ import checkBoardPositionInBounds from './checkBoardPositionInBounds'
 import getChessPieceAtChessBoardPosition from './getChessPieceAtChessBoardPosition'
 
 // TODO: implement non-pawn pieces
-const getChessPiecePotential = async (
+const getChessPiecePotential = (
   board: ChessBoard,
   piece: ChessPiece
-): Promise<Position[]> => {
+): Position[] => {
   switch (piece.pieceType) {
     case 'P':
       return getPawnPotential(board, piece)
@@ -26,7 +26,7 @@ const getChessPiecePotential = async (
 const getPawnPotential = (board: ChessBoard, piece: ChessPiece): Position[] => {
   const positions: Position[] = []
   // will be 1 to go up, -1 to go down
-  const directionMultiplier = piece.color === 'white' ? 1 : -1
+  const directionMultiplier = piece.color === 'white' ? -1 : 1
 
   let twoForward: Position | undefined
   if (!piece.hasMoved) {
@@ -65,21 +65,31 @@ const getPawnPotential = (board: ChessBoard, piece: ChessPiece): Position[] => {
   }
 
   const colorToAttack = piece.color === 'white' ? 'black' : 'white'
-  if (
-    checkBoardPositionInBounds(board.boardSize, oneForwardAndLeft) &&
-    getChessPieceAtChessBoardPosition(board, oneForwardAndLeft)?.color ===
-      colorToAttack
-  ) {
-    // Can attack
-    positions.push(oneForwardAndLeft)
+  if (checkBoardPositionInBounds(board.boardSize, oneForwardAndLeft)) {
+    const pieceAtForwardAndLeft = getChessPieceAtChessBoardPosition(
+      board,
+      oneForwardAndLeft
+    )
+
+    if (pieceAtForwardAndLeft?.color === colorToAttack) {
+      // Can attack
+      positions.push({ ...oneForwardAndLeft, contains: pieceAtForwardAndLeft })
+    }
   }
-  if (
-    checkBoardPositionInBounds(board.boardSize, oneForwardAndRight) &&
-    getChessPieceAtChessBoardPosition(board, oneForwardAndRight)?.color ===
-      colorToAttack
-  ) {
-    // Can attack
-    positions.push(oneForwardAndRight)
+
+  if (checkBoardPositionInBounds(board.boardSize, oneForwardAndRight)) {
+    const pieceAtForwardAndRight = getChessPieceAtChessBoardPosition(
+      board,
+      oneForwardAndRight
+    )
+
+    if (pieceAtForwardAndRight?.color === colorToAttack) {
+      // Can attack
+      positions.push({
+        ...oneForwardAndRight,
+        contains: pieceAtForwardAndRight,
+      })
+    }
   }
 
   return positions

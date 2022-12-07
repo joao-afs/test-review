@@ -73,7 +73,7 @@ describe('GET /board/column/:column/row/:row/potential', () => {
           hasMoved: false,
           position: {
             column: 1,
-            row: 1,
+            row: 6,
           },
         },
         {
@@ -82,7 +82,7 @@ describe('GET /board/column/:column/row/:row/potential', () => {
           hasMoved: true,
           position: {
             column: 0,
-            row: 2,
+            row: 5,
           },
         },
         {
@@ -91,7 +91,7 @@ describe('GET /board/column/:column/row/:row/potential', () => {
           hasMoved: true,
           position: {
             column: 2,
-            row: 2,
+            row: 5,
           },
         },
       ],
@@ -100,24 +100,41 @@ describe('GET /board/column/:column/row/:row/potential', () => {
 
     const response = await server.inject({
       method: 'GET',
-      url: `/board/${newBoard.boardId}/column/1/row/1/potential`,
+      url: `/board/${newBoard.boardId}/column/1/row/6/potential`,
     })
     expect(response.statusCode).toEqual(200)
     expect(response.json().positions).toHaveLength(4)
     expect(response.json()).toEqual({
       positions: expect.arrayContaining([
-        { column: 0, row: 2 },
+        {
+          column: 0,
+          row: 5,
+          contains: expect.objectContaining({
+            color: 'black',
+            position: {
+              column: 0,
+              row: 5,
+            },
+          }),
+        },
         {
           column: 2,
-          row: 2,
+          row: 5,
+          contains: expect.objectContaining({
+            color: 'black',
+            position: {
+              column: 2,
+              row: 5,
+            },
+          }),
         },
         {
           column: 1,
-          row: 2,
+          row: 5,
         },
         {
           column: 1,
-          row: 3,
+          row: 4,
         },
       ]),
     })
