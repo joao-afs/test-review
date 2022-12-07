@@ -2,6 +2,7 @@ import fastify, { FastifyInstance, FastifyServerOptions } from 'fastify'
 import allRoutes from './src/routes'
 import fs from 'fs'
 import path from 'path'
+import mongoose from 'mongoose'
 
 export const createServer = async (
   opts: FastifyServerOptions = {}
@@ -18,6 +19,13 @@ export const createServer = async (
     )
 
     server.addSchema(JSON.parse(schema))
+  }
+
+  try {
+    await mongoose.connect('mongodb://127.0.0.1:27017/chess')
+    console.log('Mongo connected!')
+  } catch (err) {
+    throw err
   }
 
   return server
