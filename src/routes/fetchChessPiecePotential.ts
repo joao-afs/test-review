@@ -5,17 +5,18 @@ import {
   RouteHandler,
   RouteOptions,
 } from 'fastify'
+import checkBoardPositionInBounds from '../business/checkBoardPositionInBounds'
 import getChessBoard from '../business/getChessBoard'
 import getChessPieceAtChessBoardPosition from '../business/getChessPieceAtChessBoardPosition'
 import getChessPiecePotential from '../business/getChessPiecePotential'
 import { ApiError } from '../types/ApiError'
-import { ChessBoardRequestParams } from '../types/ChessBoardRequestParams'
 import { ChessPieceType } from '../types/ChessPieceType'
+import { FetchChessPiecePotentialRequestParams } from '../types/FetchChessPiecePotentialRequestParams'
 import { Position } from '../types/Position'
 
 type Reply = { positions: Position[] } | { error: ApiError }
 type FetchChessPiecePotentialRoute = {
-  Params: ChessBoardRequestParams & Position
+  Params: FetchChessPiecePotentialRequestParams
   Reply: Reply
 }
 
@@ -39,6 +40,16 @@ export const handler: RouteHandler<FetchChessPiecePotentialRoute> = async (
     column: request.params.column,
     row: request.params.row,
   }
+  if (!checkBoardPositionInBounds(chessBoard.boardSize, requestedPosition)) {
+    return reply.status(400).send({
+      error: {
+        code: 'PositionOutOfBounds',
+        message:
+          'The specified positions is not present on the specified chess board.',
+      },
+    })
+  }
+
   const chessPieceAtSpecifiedPosition = await getChessPieceAtChessBoardPosition(
     chessBoard,
     requestedPosition
@@ -75,12 +86,7 @@ export const fetchChessPiecePotential: RouteOptions<
   handler,
   schema: {
     params: {
-      allOf: [
-        { $ref: 'ChessBoardRequestParams.json' },
-        {
-          $ref: 'Position.json',
-        },
-      ],
+      $ref: 'FetchChessPiecePotentialRequestParams.json',
     },
     response: {
       200: {
