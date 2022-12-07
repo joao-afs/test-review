@@ -20,7 +20,7 @@ type FetchChessPiecePotentialRoute = {
   Reply: Reply
 }
 
-const unsupportedPieceTypes: ChessPieceType[] = ['R', 'N', 'B', 'Q', 'K']
+export const unsupportedPieceTypes: ChessPieceType[] = ['R', 'N', 'B', 'Q', 'K']
 
 export const handler: RouteHandler<FetchChessPiecePotentialRoute> = async (
   request,
@@ -68,7 +68,7 @@ export const handler: RouteHandler<FetchChessPiecePotentialRoute> = async (
     })
   }
 
-  const potentialPositions = await getChessPiecePotential(
+  const potentialPositions = getChessPiecePotential(
     chessBoard,
     chessPieceAtSpecifiedPosition
   )
