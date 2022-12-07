@@ -11,6 +11,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'R',
+    hasMoved: false,
     position: {
       column: 0,
       row: 0,
@@ -19,6 +20,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'N',
+    hasMoved: false,
     position: {
       column: 1,
       row: 0,
@@ -27,6 +29,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'B',
+    hasMoved: false,
     position: {
       column: 2,
       row: 0,
@@ -35,6 +38,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'Q',
+    hasMoved: false,
     position: {
       column: 3,
       row: 0,
@@ -43,6 +47,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'K',
+    hasMoved: false,
     position: {
       column: 4,
       row: 0,
@@ -51,6 +56,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'B',
+    hasMoved: false,
     position: {
       column: 5,
       row: 0,
@@ -59,6 +65,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'N',
+    hasMoved: false,
     position: {
       column: 6,
       row: 0,
@@ -67,6 +74,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'R',
+    hasMoved: false,
     position: {
       column: 7,
       row: 0,
@@ -75,6 +83,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 0,
       row: 1,
@@ -83,6 +92,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 1,
       row: 1,
@@ -91,6 +101,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 2,
       row: 1,
@@ -99,6 +110,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 3,
       row: 1,
@@ -107,6 +119,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 4,
       row: 1,
@@ -115,6 +128,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 5,
       row: 1,
@@ -123,6 +137,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 6,
       row: 1,
@@ -131,6 +146,7 @@ const standardBlackPieceStartingPositions: ChessPiece[] = [
   {
     color: 'black',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 7,
       row: 1,
@@ -142,6 +158,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'R',
+    hasMoved: false,
     position: {
       column: 0,
       row: 7,
@@ -150,6 +167,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'N',
+    hasMoved: false,
     position: {
       column: 1,
       row: 7,
@@ -158,6 +176,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'B',
+    hasMoved: false,
     position: {
       column: 2,
       row: 7,
@@ -166,6 +185,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'Q',
+    hasMoved: false,
     position: {
       column: 3,
       row: 7,
@@ -174,6 +194,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'K',
+    hasMoved: false,
     position: {
       column: 4,
       row: 7,
@@ -182,6 +203,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'B',
+    hasMoved: false,
     position: {
       column: 5,
       row: 7,
@@ -190,6 +212,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'N',
+    hasMoved: false,
     position: {
       column: 6,
       row: 7,
@@ -198,6 +221,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'R',
+    hasMoved: false,
     position: {
       column: 7,
       row: 7,
@@ -206,6 +230,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 0,
       row: 6,
@@ -214,6 +239,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 1,
       row: 6,
@@ -222,6 +248,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 2,
       row: 6,
@@ -230,6 +257,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 3,
       row: 6,
@@ -238,6 +266,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 4,
       row: 6,
@@ -246,6 +275,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 5,
       row: 6,
@@ -254,6 +284,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 6,
       row: 6,
@@ -262,6 +293,7 @@ const standardWhitePieceStartingPositions: ChessPiece[] = [
   {
     color: 'white',
     pieceType: 'P',
+    hasMoved: false,
     position: {
       column: 7,
       row: 6,
