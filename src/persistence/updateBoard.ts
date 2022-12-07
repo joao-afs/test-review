@@ -1,13 +1,24 @@
 import { ChessBoard } from '../types/ChessBoard'
-import { boards } from './saveBoard'
+import ChessBoardModel from './models/ChessBoardModel'
+import { chessBoardModelToApiChessBoard } from './saveBoard'
 
 const updateBoard = async (
   boardId: string,
   updatedBoard: ChessBoard
 ): Promise<ChessBoard> => {
-  const indexOfBoard = boards.findIndex((it) => it.boardId === boardId)
-  boards.splice(indexOfBoard, 1, { ...updatedBoard, boardId: boardId })
-  return boards[indexOfBoard]
+  const updatedChessBoard = await ChessBoardModel.findByIdAndUpdate(
+    boardId,
+    updatedBoard,
+    {
+      returnDocument: 'after',
+    }
+  )
+
+  if (!updatedChessBoard) {
+    throw new Error('The specified chess board was not found.')
+  }
+
+  return chessBoardModelToApiChessBoard(updatedChessBoard)
 }
 
 export default updateBoard

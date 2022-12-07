@@ -1,8 +1,10 @@
-import { boards } from './saveBoard'
 import { ChessBoard } from '../types/ChessBoard'
+import ChessBoardModel from './models/ChessBoardModel'
+import { chessBoardModelToApiChessBoard } from './saveBoard'
 
 const getBoard = async (boardId: string): Promise<ChessBoard | undefined> => {
-  return boards.find((it) => it.boardId === boardId)
+  const fetchedBoard = await ChessBoardModel.findById(boardId)
+  return fetchedBoard ? chessBoardModelToApiChessBoard(fetchedBoard) : undefined
 }
 
 export default getBoard
