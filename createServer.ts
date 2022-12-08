@@ -22,7 +22,9 @@ export const createServer = async (
   }
 
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/chess')
+    await mongoose.connect(
+      process.env.MONGODB_CONNECTION_URI ?? 'mongodb://127.0.0.1:27017/chess'
+    )
     console.log('Mongo connected!')
   } catch (err) {
     throw err
