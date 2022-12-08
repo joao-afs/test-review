@@ -12,7 +12,7 @@ describe('GET /board/column/:column/row/:row/potential', () => {
   it('returns a 404 status code when a non existent board is specified', async () => {
     const response = await server.inject({
       method: 'GET',
-      url: '/board/IDontExist/column/1/row/1/potential',
+      url: '/board/123456123456/column/1/row/1/potential',
     })
     expect(response.statusCode).toEqual(404)
     expect(response.json()).toEqual({

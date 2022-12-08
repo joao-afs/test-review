@@ -45,6 +45,9 @@
         "displayName": "test",
         "preset": "ts-jest",
         "testEnvironment": "node",
+        "setupFilesAfterEnv": [
+          "<rootDir>/src/setupTests.ts"
+        ],
         "testPathIgnorePatterns": [
           "/node_modules/",
           "<rootDir>/build/"
