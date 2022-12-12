@@ -1,6 +1,0 @@
-{
-  "$id": "ChessPieceType.json",
-  "title": "ChessPieceType",
-  "type": "string",
-  "enum": ["K", "Q", "B", "N", "R", "P"]
-}
